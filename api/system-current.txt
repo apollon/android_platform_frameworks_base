@@ -7752,6 +7752,8 @@ package android.telephony {
     method public void onCallAttributesChanged(@NonNull android.telephony.CallAttributes);
     method @RequiresPermission("android.permission.READ_PRECISE_PHONE_STATE") public void onCallDisconnectCauseChanged(int, int);
     method @RequiresPermission("android.permission.READ_PRECISE_PHONE_STATE") public void onImsCallDisconnectCauseChanged(@NonNull android.telephony.ims.ImsReasonInfo);
+    method public void onOutgoingEmergencyCall(@NonNull android.telephony.emergency.EmergencyNumber);
+    method public void onOutgoingEmergencySms(@NonNull android.telephony.emergency.EmergencyNumber);
     method @RequiresPermission("android.permission.READ_PRECISE_PHONE_STATE") public void onPreciseCallStateChanged(@NonNull android.telephony.PreciseCallState);
     method @RequiresPermission("android.permission.READ_PRECISE_PHONE_STATE") public void onPreciseDataConnectionStateChanged(@NonNull android.telephony.PreciseDataConnectionState);
     method public void onRadioPowerStateChanged(int);
@@ -8269,6 +8271,27 @@ package android.telephony {
   public abstract class VisualVoicemailService extends android.app.Service {
     method public static final void sendVisualVoicemailSms(android.content.Context, android.telecom.PhoneAccountHandle, String, short, String, android.app.PendingIntent);
     method public static final void setSmsFilterSettings(android.content.Context, android.telecom.PhoneAccountHandle, android.telephony.VisualVoicemailSmsFilterSettings);
+  }
+
+}
+
+package android.telephony.cdma {
+
+  public final class CdmaSmsCbProgramData implements android.os.Parcelable {
+    method public int describeContents();
+    method public int getCategory();
+    method public int getOperation();
+    method public void writeToParcel(android.os.Parcel, int);
+    field public static final int CATEGORY_CMAS_CHILD_ABDUCTION_EMERGENCY = 4099; // 0x1003
+    field public static final int CATEGORY_CMAS_EXTREME_THREAT = 4097; // 0x1001
+    field public static final int CATEGORY_CMAS_LAST_RESERVED_VALUE = 4351; // 0x10ff
+    field public static final int CATEGORY_CMAS_PRESIDENTIAL_LEVEL_ALERT = 4096; // 0x1000
+    field public static final int CATEGORY_CMAS_SEVERE_THREAT = 4098; // 0x1002
+    field public static final int CATEGORY_CMAS_TEST_MESSAGE = 4100; // 0x1004
+    field @NonNull public static final android.os.Parcelable.Creator<android.telephony.cdma.CdmaSmsCbProgramData> CREATOR;
+    field public static final int OPERATION_ADD_CATEGORY = 1; // 0x1
+    field public static final int OPERATION_CLEAR_CATEGORIES = 2; // 0x2
+    field public static final int OPERATION_DELETE_CATEGORY = 0; // 0x0
   }
 
 }
